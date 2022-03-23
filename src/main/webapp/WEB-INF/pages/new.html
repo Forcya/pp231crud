@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new user</title>
+    <style> table th, table td {
+        padding: 10px 5px;
+        font-family: "Roboto Light",serif;
+        font-size: 16px;
+        border-style: solid;
+        border-width: 1px;
+        background: springgreen;
+    }
+    </style>
+</head>
+<body>
+<form th:method="POST" th:action="@{/users}" th:object="${user}">
+    <table>
+        <tr><td>
+            <label for="name">Enter name: </label>
+            <input type="text" th:field="*{name}" id="name"/>
+<!--            <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name not valid!</div>-->
+        </td></tr>
+        <tr><td>
+            <label for="position">Enter position: </label>
+            <input type="text" th:field="*{position}" id="position"/>
+<!--            <div style="color: red" :if="${#fields.hasErrors('position')}" th:errors="*{position}">Position not valid!</div>-->
+        </td></tr>
+        <tr><td>
+            <label for="email">Enter email: </label>
+            <input type="text" th:field="*{email}" id="email"/>
+<!--            <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email not valid!</div>-->
+        </td></tr>
+        <tr><td>
+            <input type="submit" value="Create!"/>
+        </td></tr>
+    </table>
+</form>
+
+</body>
+</html>

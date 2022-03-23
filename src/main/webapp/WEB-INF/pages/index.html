@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <style> table th, table td {
+            padding: 10px 5px;
+            font-family: "Roboto Light",serif;
+            font-size: 16px;
+            border-style: solid;
+            border-width: 1px;
+            background: springgreen;
+        }
+        button {
+            padding: 5px;
+            background-color: coral;
+        }
+    </style>
+</head>
+<body>
+    <H1>Users</H1>
+    <br/>
+    <div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Email</th>
+            </tr>
+            <tr th:each="user : ${users}">
+                <td><a th:href="@{/users/{id}(id=${user.getId()})}" th:utext="${user.getId()}">Id</a></td>
+                <td th:utext="${user.getName()}">Name</td>
+                <td th:utext="${user.getPosition()}">Position</td>
+                <td th:utext="${user.getEmail()}">Email</td>
+            </tr>
+        </table>
+    </div>
+    <br/>
+    <hr/>
+    <button onclick="window.location.href = '/users/new';">Create new user</button>
+</body>
+</html>
